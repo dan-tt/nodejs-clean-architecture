@@ -1,7 +1,7 @@
 # nodejs-clean-architecture
  RESTful API Project with Clean Architecture
 
-### Overview
+## Overview
 This project is a RESTful API application built with Express.js, MongoDB, and Redis, following the principles of Clean Architecture combined with Vertical and Horizontal Architecture structures.
 
 The API supports the following features:
@@ -12,7 +12,7 @@ The API supports the following features:
 - Apple login (OAuth)
 - Post management (create, update, delete, find posts)
 
-### Table of Contents
+## Table of Contents
 
 * Installation
 * Configuration
@@ -28,12 +28,12 @@ The API supports the following features:
 * Technologies
 * Installation
 
-### Installation
+## Installation
 ```bash
 cd nodejs-clean-architecture
 npm install
 ```
-### Configuration
+## Configuration
 You will need to set up environment variables for MongoDB, Redis, and OAuth providers (Google and Apple). Create a .env file in the project root with the following values:
 ```sh
 # MongoDB
@@ -56,10 +56,10 @@ APPLE_PRIVATE_KEY=your-apple-private-key
 JWT_SECRET=your-jwt-secret
 ```
 
-### API Endpoints
+## API Endpoints
 
-## User Endpoints
-# 1. User Sign-Up
+### User Endpoints
+#### 1. User Sign-Up
 * URL: /api/users/signup
 * Method: POST
 * Request Body:
@@ -83,7 +83,7 @@ JWT_SECRET=your-jwt-secret
 }
 ```
 
-# 2. User Login by Email
+#### 2. User Login by Email
 * URL: /api/users/login
 * Method: POST
 * Request Body:
@@ -105,16 +105,16 @@ JWT_SECRET=your-jwt-secret
 }
 ```
 
-# 3. Google Login
+#### 3. Google Login
 * URL: /api/auth/google
 * Redirects to Google's OAuth2 login page
 
-# 3. Apple Login
+#### 4. Apple Login
 * URL: /api/auth/apple
 * Redirects to Apple’s OAuth2 login page.
 
-## Post Endpoints
-# 1. Create Post
+### Post Endpoints
+#### 1. Create Post
 * URL: /api/posts
 * Method: POST
 * Request Body:
@@ -137,7 +137,7 @@ JWT_SECRET=your-jwt-secret
 }
 ```
 
-# 2. Update Post
+#### 2. Update Post
 * URL: /api/posts/:id
 * Method: PUT
 * Request Body:
@@ -154,7 +154,7 @@ JWT_SECRET=your-jwt-secret
 }
 ```
 
-# 3. Delete Post
+#### 3. Delete Post
 * URL: /api/posts/:id
 * Method: DELETE
 * Response:
@@ -164,7 +164,7 @@ JWT_SECRET=your-jwt-secret
 }
 ```
 
-# 4. Find Post by ID
+#### 4. Find Post by ID
 * URL: /api/posts/:id
 * Method: GET
 * Response:
@@ -176,22 +176,22 @@ JWT_SECRET=your-jwt-secret
 }
 ```
 
-### Authentication
+## Authentication
 
-## Email Authentication
+### Email Authentication
 For users logging in via email and password, JWT tokens are issued. These tokens must be included in the Authorization header for any authenticated requests.
 
 ```http
 Authorization: Bearer <your-jwt-token>
 ```
 
-## Google Login
+### Google Login
 For Google login, users are redirected to Google's OAuth2 flow via the /api/auth/google endpoint. On successful login, the API issues a JWT token.
 
-##  Apple Login
+###  Apple Login
 For Apple login, users are redirected to Apple’s OAuth2 flow via the /api/auth/apple endpoint. On successful login, the API issues a JWT token.
 
-### Running the Project
+## Running the Project
 
 Start the development server:
 ```bash
@@ -199,7 +199,7 @@ npm run start
 ```
 The API will run on http://localhost:5000.
 
-### Running Tests
+## Running Tests
 
 To run unit tests for the project:
 ```bash
@@ -214,7 +214,7 @@ The tests cover various use cases, including:
 * Apple login (OAuth2)
 * Post management (create, update, delete, find)
 
-### Project Structure
+## Project Structure
 ```bash
 .
 ├── src
@@ -237,7 +237,7 @@ The tests cover various use cases, including:
 ```
 This structure adheres to Clean Architecture principles, with use cases, controllers, and repositories decoupled and organized.
 
-### Technologies
+## Technologies
 
 * Express.js: For building the RESTful API
 * MongoDB: NoSQL database for storing user and post data
