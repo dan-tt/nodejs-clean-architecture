@@ -4,16 +4,23 @@
   "description": "RESTful API Project with Clean Architecture",
   "main": "index.js",
   "scripts": {
-    "start": "",
-    "test": "jest --coverage"
+    "start": "node src/server.js",
+    "test": "jest --coverage",
+    "dev": "nodemon src/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.3",
+    "passport": "^0.7.0",
+    "passport-apple": "^2.0.2",
+    "passport-google-oauth20": "^2.0.0",
     "redis": "^4.7.0"
   },
   "devDependencies": {

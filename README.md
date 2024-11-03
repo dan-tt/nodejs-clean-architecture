@@ -217,23 +217,57 @@ The tests cover various use cases, including:
 ## Project Structure
 ```bash
 .
-├── src
-│   ├── auth
-│   │   └── passport.js              # OAuth strategies (Google, Apple)
-│   ├── posts
+├── src          
+│   ├── domain
 │   │   ├── entities
-│   │   ├── use-cases
-│   │   ├── controllers
-│   │   └── routes.js
-│   ├── users
-│   │   ├── entities
-│   │   ├── use-cases
-│   │   ├── repositories
-│   │   └── routes.js
+│   │   │   ├── Post.js
+│   │   │   └── User.js
+│   ├── utilities
+│   │   ├── auth
+│   │   │   ├── jwt.js
+│   │   │   ├── appleAuth.js
+│   │   │   └── gooleAuth.js
+│   ├── use-cases
+│   │   ├── posts
+│   │   │   ├── CreatePost.js
+│   │   │   ├── DeletePost.js
+│   │   │   └── UpdatePost.js
+│   │   ├── users
+│   │   │   ├── SignUp.js           # Register a user with email and password
+│   │   │   └── SignIn.js           # Sign in by email, password, by Google, and by Apple
+│   ├── features
+│   │   ├── posts
+│   │   └── users
+│   ├── routes
+│   │   ├── postRoutes.js           # create/delete/update post API
+│   │   └── userRoutes.js           # sign-up/sign-in/google-sign-in/apple-sign-in API
+│   ├── middlewares
+│   │   │   └── authMiddleware.js
+│   ├── repositories
+│   │   ├── CacheRepository.js      # Cache data on Redis
+│   │   ├── PostRepository.js       # create/delete/update Post on MongoDB
+│   │   └── UserRepository.js       # create/delete/update User on MongoDB
+│   ├── app.js                       # Main app
 │   ├── server.js                    # Main server setup
-│   └── config
-│       └── database.js              # MongoDB and Redis connection
+│   ├── config
+│   │   ├── MongoConfig.js           # MongoDB connection
+│   │   └── RedisConfig.js           # Redis connection   
+│   ├── env
+│   │   └── .env                     # Enviroment   
 └── tests                            # Unit tests
+    ├── use-cases
+    │   ├── SignUp.test.js
+    │   ├── SignIn.test.js
+    │   ├── UpdatePost.test.js
+    │   ├── DeletePost.test.js
+    │   └── CreatePost.test.js
+    ├── repositories
+    │   ├── UserRepository.test.js
+    │   └── PostRepository.test.js
+    └── routes
+        ├── userRoutes.test.js
+        └── postRoutes.test.js
+
 ```
 This structure adheres to Clean Architecture principles, with use cases, controllers, and repositories decoupled and organized.
 

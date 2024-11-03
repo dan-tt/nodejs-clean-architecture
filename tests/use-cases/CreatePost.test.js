@@ -1,26 +1,23 @@
-const CreatePost = require('../../src/posts/use-cases/CreatePost');
-const Post = require('../../src/posts/entities/Post');
+const PostRepository = require('../../src/repositories/PostRepository');
+const CreatePost = require('../../src/use-cases/posts/CreatePost');
+
+jest.mock('../../src/repositories/PostRepository');
 
 describe('CreatePost Use Case', () => {
-  let postRepositoryMock;
+    let postRepository;
+    let createPost;
 
-  beforeEach(() => {
-    // Mock the post repository
-    postRepositoryMock = {
-      save: jest.fn(),
-    };
-  });
+    beforeEach(() => {
+        postRepository = new PostRepository();
+        createPost = new CreatePost(postRepository);
+    });
 
-  it('should create and save a post', async () => {
-    // Arrange
-    const postData = { title: 'Test Post', content: 'This is a test.' };
-    const createPost = new CreatePost(postRepositoryMock);
+    it('should create a post', async () => {
+        const postData = { title: 'New Post', content: 'Post content', user: 'userId' };
+        postRepository.save.mockResolvedValue(postData);
 
-    // Act
-    await createPost.execute(postData);
-
-    // Assert
-    expect(postRepositoryMock.save).toHaveBeenCalledTimes(1);
-    expect(postRepositoryMock.save).toHaveBeenCalledWith(expect.any(Post));
-  });
+        const post = await createPost.execute(postData);
+        expect(post).toEqual(postData);
+        expect(postRepository.save).toHaveBeenCalledWith(postData);
+    });
 });
