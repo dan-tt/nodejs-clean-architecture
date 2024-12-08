@@ -23,6 +23,9 @@ app.use(passport.session()); // If you're using session-based authentication
 app.use(express.json());
 
 // Routes
+app.use('/v1', ()=>{
+  
+})
 app.use('/api/posts', postRoutes);
 app.use('/api/users', userRoutes);
 
